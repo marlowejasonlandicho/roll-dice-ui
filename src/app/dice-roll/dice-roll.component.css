@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+.example-form-field {
+  width: 200px;
+}
+
+.example-card-grid {
+  max-width: 50%;
+}

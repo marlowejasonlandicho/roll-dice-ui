@@ -1,0 +1,115 @@
+<mat-card>
+    <mat-card>
+        <mat-card-content>
+            <p>
+                <mat-label>Number of Dice:</mat-label>&nbsp;
+                &nbsp;
+                <mat-slider [max]="max" [min]="min" [step]="step" [thumbLabel]="thumbLabel"
+                    [tickInterval]="getSliderTickInterval()" [(ngModel)]="numOfDiceValue">
+                </mat-slider>
+                <mat-label>{{numOfDiceValue}}</mat-label>
+                &nbsp;&nbsp;&nbsp;
+                <mat-label>Number of Dice Sides:</mat-label>
+                &nbsp;&nbsp;&nbsp;
+                <mat-form-field>
+                    <mat-select [(value)]="diceSideValue">
+                        <mat-option *ngFor="let diceSide of diceSides" [value]="diceSide">
+                            {{diceSide}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;
+
+                <mat-label>Number of Rolls:</mat-label>&nbsp;
+
+                <mat-form-field class="example-form-field">
+                    <input matInput type="number" [(ngModel)]="numOfRolls">
+                </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <form (ngSubmit)="onSubmit()">
+                <button type="submit" mat-button>Roll Dice!</button>
+            </form>
+        </mat-card-actions>
+    </mat-card>
+    <br>
+
+    <mat-card *ngIf="tableExecutionResult">
+        <mat-card-header>
+            <mat-card-title>Dice Roll Result</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <table mat-table [dataSource]="tableExecutionResult" class="mat-elevation-z8">
+                <ng-container matColumnDef="rollSum">
+                    <th mat-header-cell *matHeaderCellDef> Roll Sum </th>
+                    <td mat-cell *matCellDef="let element"> {{element.rollSum}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="rollSumCount">
+                    <th mat-header-cell *matHeaderCellDef> Roll Sum Count </th>
+                    <td mat-cell *matCellDef="let element"> {{element.rollSumCount}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedExecColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedExecColumns;"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="tableSimulationResult">
+        <mat-card-header>
+            <mat-card-title>Dice Roll Simulation</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <table mat-table [dataSource]="tableSimulationResult" class="mat-elevation-z8">
+                <ng-container matColumnDef="numOfSimulations">
+                    <th mat-header-cell *matHeaderCellDef> Number of Simulations </th>
+                    <td mat-cell *matCellDef="let element"> {{element.numOfSimulations}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalRolls">
+                    <th mat-header-cell *matHeaderCellDef> Total Roll Count </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalRolls}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedSimColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedSimColumns;"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="tableDistributionResult">
+        <mat-card-header>
+            <mat-card-title>Dice Roll Relative Distribution</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <table mat-table [dataSource]="tableDistributionResult" class="mat-elevation-z8">
+                <ng-container matColumnDef="relativeDistribution">
+                    <th mat-header-cell *matHeaderCellDef> Relative Distribution </th>
+                    <td mat-cell *matCellDef="let element"> {{element.relativeDistribution}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="rollSum">
+                    <th mat-header-cell *matHeaderCellDef> Roll Sum </th>
+                    <td mat-cell *matCellDef="let element"> {{element.rollSum}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="rollSumCount">
+                    <th mat-header-cell *matHeaderCellDef> Roll Sum Count</th>
+                    <td mat-cell *matCellDef="let element"> {{element.rollSumCount}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedRelativeDistributionColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedRelativeDistributionColumns;"></tr>
+            </table>
+
+        </mat-card-content>
+    </mat-card>
+    <!-- </span> -->
+
+</mat-card>

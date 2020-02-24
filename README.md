@@ -1,27 +1,27 @@
-# RollDiceUi
+# Roll Dice UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+* The User Interface Application for invoking the Roll Dice Microservice
+* The use of Angular Material was leveraged to enable quick turn around of UI Development
+* This project was created with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
-## Development server
+## Run the server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve -o` to run the application. Navigate to `http://localhost:4200/`
 
-## Code scaffolding
+## Navigation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The default home screen is a 3 field UI that contains the following:
 
-## Build
+* **Number of Dice** : # of dice to roll
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* **Number Dice Sides** : # of sides on each dice
 
-## Running unit tests
+* **Number of Rolls** : # of times each dice has to be rolled
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The result is a 3 table output which contains the following:
 
-## Running end-to-end tests
+* **Dice Roll Result** : Displays the Dice distribution for the dice number–dice side combination
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* **Dice Roll Simulation** : Displays the number of simulations and total rolls made, grouped by all existing dice number–dice side combinations
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* **Dice Roll Relative Distribution** : Displays the relative distribution of dice number–dice side combination per total number rolls
